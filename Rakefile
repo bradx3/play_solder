@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "play_solder"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "Create mock image and mp3 files"
+    gem.description = "Create mock image and mp3 files"
     gem.email = "brad@lucky-dip.net"
     gem.homepage = "http://github.com/bradx3/play_solder"
     gem.authors = ["Brad Wilson"]
