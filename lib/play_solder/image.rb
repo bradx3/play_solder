@@ -1,5 +1,6 @@
 module PlaySolder
   class Image < Fake
+    EXTENSIONS = [ ".jpg", ".png" ]
 
     def generate
       cmd = "convert -background \\#{ random_colour }"
@@ -8,6 +9,14 @@ module PlaySolder
       cmd += %Q{ "#{ faked_file }" }
       system(cmd)
       faked_file
+    end
+
+    def mime_type
+      if extensions == ".jpg"
+        "application/jpeg"
+      else
+        "application/png"
+      end
     end
 
     def random_colour

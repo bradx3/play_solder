@@ -1,6 +1,8 @@
 require "pathname"
 
 module PlaySolder
+  class UnfakeablePathException < Exception; end  
+  
   class Fake
 
     attr_accessor :path
