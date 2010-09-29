@@ -1,6 +1,6 @@
 module PlaySolder
   class MP3 < Fake
-    EXTENSIONS = [ ".jpg", ".png" ]
+    EXTENSIONS = [ ".mp3" ]
 
     def generate
       aiff = faked_file.gsub(extension, ".aiff")

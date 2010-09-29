@@ -1,6 +1,6 @@
 module PlaySolder
   class Image < Fake
-    EXTENSIONS = [ ".jpg", ".png" ]
+    EXTENSIONS = [ ".jpg", ".png", ".gif" ]
 
     def generate
       cmd = "convert -background \\#{ random_colour }"

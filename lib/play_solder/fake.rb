@@ -5,6 +5,18 @@ module PlaySolder
   
   class Fake
 
+    def self.for_path(path)
+      ext = File.extname(path)
+      
+      if PlaySolder::Image::EXTENSIONS.include?(ext)
+        PlaySolder::Image.new(path)
+      elsif PlaySolder::MP3::EXTENSIONS.include?(ext)
+        PlaySolder::MP3.new(path)
+      else
+        raise UnfakeablePathException.new("Can't fake #{ path }")
+      end
+    end
+
     attr_accessor :path
     
     def initialize(path)
