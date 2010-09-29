@@ -1,5 +1,3 @@
-require "rubygems"
-require "mini_magick"
 require "pathname"
 
 module PlaySolder
@@ -9,6 +7,14 @@ module PlaySolder
     
     def initialize(path)
       @path = path
+    end
+
+    def extension
+      @extension = File.extname(path)
+    end
+
+    def text
+      @text ||= File.basename(path).gsub(extension, "")
     end
 
     def faked_file
@@ -24,9 +30,11 @@ module PlaySolder
 
   class PlaySolder::Image < PlaySolder::Fake
     def generate
-      image = MiniMagick::Image.new(path)
-      image.background(random_colour)
-      image.write(faked_file)
+      cmd = "convert -background \\#{ random_colour }"
+      cmd += " -size 200x100 -gravity center"
+      cmd += %Q{ label:"#{ text }" }
+      cmd += %Q{ "#{ faked_file }" }
+      system(cmd)
       faked_file
     end
 
@@ -37,7 +45,7 @@ module PlaySolder
     end
 
     def random_component
-      rand(15).to_s(16)
+      (3..13).sort_by { rand }.first.to_s(16)
     end
 
   end
@@ -45,11 +53,9 @@ module PlaySolder
 
   class PlaySolder::MP3 < PlaySolder::Fake
     def generate
-      ext = File.extname(path)
-      message = File.basename(path).gsub(ext, "")
-      aiff = faked_file.gsub(ext, ".aiff")
-      cmd = %Q{ say -v Vicki "#{ message }" -o "#{ aiff }"; }
-      cmd += %Q{ sox "#{ aiff }" #{ faked_file }"; }
+      aiff = faked_file.gsub(extension, ".aiff")
+      cmd = %Q{ say -v Vicki "#{ text }" -o "#{ aiff }"; }
+      cmd += %Q{ sox "#{ aiff }" "#{ faked_file }"; }
       system(cmd)
       faked_file
     end

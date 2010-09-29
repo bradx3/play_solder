@@ -1,21 +1,26 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe PlaySolder::Image do
-  before do
-    @image = PlaySolder::Image.new("Yyyy.jpg")
+  before(:all) do
+    @file = PlaySolder::Image.new("A test file.jpg").generate
   end
 
-  it "should generate" do
-    @image.generate
+  after(:all) do
+    File.delete(@file)
   end
+
+  it "should create a file" do
+    File.exist?(@file).should be_true
+  end
+  
 end
 
 describe PlaySolder::MP3 do
   before do
-    @audio = PlaySolder::MP3.new("xxx.mp3")
+    @file = PlaySolder::MP3.new("A test mp3.mp3").generate
   end
 
-  it "should generate" do
-    @audio.generate
+  it "should create a file" do
+    File.exist?(@file).should be_true
   end
 end
