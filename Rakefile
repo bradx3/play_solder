@@ -11,6 +11,7 @@ begin
     gem.homepage = "http://github.com/bradx3/play_solder"
     gem.authors = ["Brad Wilson"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_development_dependency "mini_magick", ">= 2.1"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
