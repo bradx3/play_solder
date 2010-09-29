@@ -33,7 +33,7 @@ module PlaySolder
 
     def faked_file
       if @faked_file.nil?
-        @faked_file = "/tmp/#{ path }"
+        @faked_file = "/tmp/play_solder/#{ path }"
         parent = Pathname.new(@faked_file).parent.to_s
         FileUtils.mkdir_p(parent) unless File.exist?(parent)
       end
