@@ -1,12 +1,19 @@
 module PlaySolder
   class Image < Fake
     EXTENSIONS = [ ".jpg", ".png", ".gif" ]
+    DEFAULT_SIZE = "200x100"
+
+    def self.auto_resize(options)
+      @@auto_resize = options
+    end
 
     def generate
-      cmd = "convert -background \\#{ random_colour }"
-      cmd += " -size 200x100 -gravity center"
-      cmd += %Q{ label:"#{ text }" }
-      cmd += %Q{ "#{ faked_file }" }
+      cmd = "convert"
+      cmd += " -background \\#{ random_colour }"
+      cmd += " -size #{ size }"
+      cmd += " -gravity center"
+      cmd += " label:\"#{ text }\""
+      cmd += " \"#{ faked_file }\""
       system(cmd)
       faked_file
     end
@@ -17,6 +24,15 @@ module PlaySolder
       else
         "application/png"
       end
+    end
+
+    def size
+      if defined?(@@auto_resize) and @@auto_resize
+        @@auto_resize.each do |regexp, size|
+          return size if path.match(regexp)
+        end
+      end
+      DEFAULT_SIZE
     end
 
     def random_colour

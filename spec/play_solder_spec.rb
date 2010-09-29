@@ -28,18 +28,44 @@ describe PlaySolder::Image do
   end
 
   after(:all) do
-    File.delete(@file)
+    File.delete(@file) if @file
   end
 
   it "should create a file" do
     File.exist?(@file).should be_true
   end
-  
+end
+
+describe PlaySolder::Image, "size" do
+  before do
+    PlaySolder::Image.auto_resize(/xxx/ => "1000x1000", "a string" => "500x500")
+  end
+
+  it "should return the correct size for filenames matching regexps" do
+    PlaySolder::Image.new("/some/path/to/xxx.mp3").size.should == "1000x1000"
+  end
+
+  it "should return the correct size for paths matching regexps" do
+    PlaySolder::Image.new("/some/path/to/xxx/test.mp3").size.should == "1000x1000"
+  end
+
+  it "should return the correct size paths matching a string" do
+    PlaySolder::Image.new("/some/path/to/xxx/a string.mp3").size.should == "500x500"
+  end
+
+  it "should return the default size if no match" do
+    PlaySolder::Image.new("/some/path/to/test.mp3").size.should == PlaySolder::Image::DEFAULT_SIZE
+  end
+
 end
 
 describe PlaySolder::MP3 do
   before do
     @file = PlaySolder::MP3.new("A test mp3.mp3").generate
+  end
+
+  after(:all) do
+    File.delete(@file) if @file
   end
 
   it "should create a file" do
