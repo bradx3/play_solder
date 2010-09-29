@@ -8,6 +8,8 @@ module PlaySolder
     end
 
     def generate
+      return faked_file if File.exist?(faked_file)
+
       cmd = "convert"
       cmd += " -background \\#{ random_colour }"
       cmd += " -size #{ size }"
@@ -19,10 +21,12 @@ module PlaySolder
     end
 
     def mime_type
-      if extensions == ".jpg"
-        "application/jpeg"
-      else
-        "application/png"
+      if extension == ".jpg"
+        "image/jpeg"
+      elsif extension == ".png"
+        "image/png"
+      elsif extension == ".gif"
+        "image/gif"
       end
     end
 

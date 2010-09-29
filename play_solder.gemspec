@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
      "lib/play_solder/fake.rb",
      "lib/play_solder/image.rb",
      "lib/play_solder/mp3.rb",
+     "play_solder.gemspec",
      "spec/play_solder_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"

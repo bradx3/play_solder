@@ -56,7 +56,6 @@ describe PlaySolder::Image, "size" do
   it "should return the default size if no match" do
     PlaySolder::Image.new("/some/path/to/test.mp3").size.should == PlaySolder::Image::DEFAULT_SIZE
   end
-
 end
 
 describe PlaySolder::MP3 do
