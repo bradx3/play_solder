@@ -15,7 +15,7 @@ module PlaySolder
       cmd += " -size #{ size }"
       cmd += " -gravity center"
       cmd += " label:\"#{ text }\""
-      cmd += " \"#{ faked_file }\""
+      cmd += " \"#{ escaped_faked_file }\""
       system(cmd)
       faked_file
     end

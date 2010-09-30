@@ -31,6 +31,10 @@ module PlaySolder
       @text ||= File.basename(path).gsub(extension, "")
     end
 
+    def escaped_faked_file
+      @escaped_faked_file ||= faked_file.gsub("\"", "\\\"")
+    end
+
     def faked_file
       if @faked_file.nil?
         @faked_file = "/tmp/play_solder/#{ path }"
