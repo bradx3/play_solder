@@ -12,6 +12,8 @@ module PlaySolder
         Image.new(path)
       elsif MP3::EXTENSIONS.include?(ext)
         MP3.new(path)
+      elsif Swf::EXTENSIONS.include?(ext)
+        Swf.new(path)
       else
         raise UnfakeablePathException.new("Can't fake #{ path }")
       end

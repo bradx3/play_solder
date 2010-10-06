@@ -16,6 +16,10 @@ describe PlaySolder::Fake, "for_path" do
   it "should return an mp3 for mp3s" do
     PlaySolder::Fake.for_path("test.mp3").class.should == PlaySolder::MP3
   end
+  
+  it "should return a swf for swfs" do
+    PlaySolder::Fake.for_path("test.swf").class.should == PlaySolder::Swf
+  end
 
   it "should raise an error for other types" do
     lambda { PlaySolder::Fake.for_path("test.blah") }.should raise_error(PlaySolder::UnfakeablePathException)
@@ -67,6 +71,20 @@ describe PlaySolder::MP3 do
     File.delete(@file) if @file
   end
 
+  it "should create a file" do
+    File.exist?(@file).should be_true
+  end
+end
+
+describe PlaySolder::Swf do
+  before do
+    @file = PlaySolder::Swf.new("A test swf.swf").generate
+  end
+  
+  after(:all) do
+    File.delete(@file) if @file
+  end
+  
   it "should create a file" do
     File.exist?(@file).should be_true
   end
