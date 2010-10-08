@@ -24,6 +24,13 @@ If you're using [Homebrew](http://github.com/mxcl/homebrew) (and if you're not, 
 > PlaySolder::Image.auto_resize(/thumbnail/ => "100x75")
 > path_to_created_file = PlaySolder::Fake.for_path("thumbnail_1.png").generate 
 
+
+## Authors
+
+Brad Wilson - http://github.com/bradx3
+Keith Pitty - http://github.com/keithpitty
+Rob Chisolm - rawb at iinet.com.au
+
 ## Note on Patches/Pull Requests
  
 * Fork the project.
@@ -39,4 +46,3 @@ If you're using [Homebrew](http://github.com/mxcl/homebrew) (and if you're not, 
 Copyright (c) 2010 Brad Wilson. See LICENSE for details.
 
 
-  [1]: http://github.com/mxcl/homebrew "Homebrew"
