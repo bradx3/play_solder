@@ -31,7 +31,7 @@ Brad Wilson - http://github.com/bradx3
 
 Keith Pitty - http://github.com/keithpitty
 
-Rob Chisolm - rawb at iinet.com.au
+Rob Chisholm - robertsonchisholm@gmail.com
 
 ## Note on Patches/Pull Requests
  
