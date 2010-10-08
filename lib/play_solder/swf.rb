@@ -4,7 +4,8 @@ module PlaySolder
     
     def generate
       return faked_file if File.exist?(faked_file)
-      FileUtils.copy('placeholder.swf', "/tmp/play_solder/#{path}")
+      swf = File.join(File.dirname(__FILE__), "..", "..", "placeholder.swf")
+      FileUtils.copy(swf, faked_file)
       faked_file
     end
 

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Brad Wilson"]
-  s.date = %q{2010-09-30}
+  s.date = %q{2010-10-08}
   s.description = %q{Create mock image and mp3 files}
   s.email = %q{brad@lucky-dip.net}
   s.extra_rdoc_files = [
@@ -27,6 +27,8 @@ Gem::Specification.new do |s|
      "lib/play_solder/fake.rb",
      "lib/play_solder/image.rb",
      "lib/play_solder/mp3.rb",
+     "lib/play_solder/swf.rb",
+     "placeholder.swf",
      "play_solder.gemspec",
      "spec/play_solder_spec.rb",
      "spec/spec.opts",
