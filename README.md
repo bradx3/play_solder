@@ -28,7 +28,9 @@ If you're using [Homebrew](http://github.com/mxcl/homebrew) (and if you're not, 
 ## Authors
 
 Brad Wilson - http://github.com/bradx3
+
 Keith Pitty - http://github.com/keithpitty
+
 Rob Chisolm - rawb at iinet.com.au
 
 ## Note on Patches/Pull Requests
